@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Now Enter - Crazy Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional fonts for this theme -->
+    <link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this theme -->
+    <link href="../static/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="/">Crazy Blog</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/edit">Edit Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/type">Post Types</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <header class="intro-header" style="background-image: url('../static/img/6.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <div class="post-heading">
+                        <h1>{{result[1]}}</h1>
+                        <h2 class="subheading">{{result[3]}}</h2>
+                        <span class="meta">Posted by <a href="/about" style="text-decoration: none;">Crazy</a> on {{result[5]}} <a href="/typeDetial?name={{result[2]}}" style="text-decoration: none;">{{result[2]}}</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1" id="indexContent">
+                    <!--<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>-->
+                    <!--<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>-->
+                    <!--<h2 class="section-heading">The Final Frontier</h2>-->
+                    <!--<h4>The Final Frontier</h4>-->
+                    <!--<blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>-->
+                    <!--<img class="img-responsive" src="img/post-sample-image.jpg">-->
+                    <!--<span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>-->
+                </div>
+            </div>
+        </div>
+    </article>
+    <hr>
+
+    <!-- state -->
+    <input type="text" value="{{result[4]}}" style="display: none; position: absolute" id="State">
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <p class="copyright text-muted">Copyright@crazy crazyfisher123.cn 2018.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 3.1.1 -->
+    <script src="../static/lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="../static/lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../static/js/clean-blog.min.js"></script>
+
+    <script type="text/javascript">
+            $(function() {
+            $("table tr:nth-child(even)").addClass("even");
+            document.getElementById("indexContent").innerHTML = document.getElementById("State").value;
+            })
+    </script>
+
+</body>
+
+</html>

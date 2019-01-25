@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Now Enter - Crazy Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional fonts for this theme -->
+    <link href="../static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this theme -->
+    <link href="../static/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    <style>
+        .navbar-toggler {
+            z-index: 1;
+        }
+
+        @media (max-width: 576px) {
+            nav>.container {
+                width: 100%;
+            }
+        }
+
+        .carTypes {
+            height: auto;
+        }
+
+        .contype {
+            width: auto;
+        }
+
+        #preview {
+            padding-bottom: 500px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="/">Crazy Blog</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/edit">Edit Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/type">Post Types</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="intro-header" style="background-image: url('../static/img/1.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <div class="site-heading">
+                        <h1>Edit Post</h1>
+                        <!--<hr class="small">-->
+                        <!--<span class="subheading">Now start writing your essay.</span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                <p class="post-meta">You can edit your articles in markdown format, and check the editing results through scrolling left or right
+                    in real time.</p>
+            </div>
+        </div>
+            <div id="myCarousel" class="carousel slide carTypes">
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="container contype">
+                            <textarea id="text-input" name="content" oninput="this.editer.update()" style="width:100%;height:500px; background:#ffffff;font-size:22px; border: none; outline: none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="item container">
+                        <div id="preview" style="width:100%;height:auto;background:#ffffff;"></div>
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        <form method="post">
+            <!-- state -->
+            <input type="text" style="display: none; position: absolute" id="con" name="content">
+            <div class="form-group" style="float: right;">
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- state -->
+    <input type="text" style="display: none; position: absolute" value="{{state}}"  id="State">
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <p class="copyright text-muted">Copyright@crazy crazyfisher123.cn 2018.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src='../static/js/markdown.js'></script>
+    <script type="text/javascript">
+        function Editor(input, preview) {
+            this.update = function () {
+                preview.innerHTML = markdown.toHTML(input.value);
+                document.getElementById("con").value = markdown.toHTML(input.value);
+            };
+            input.editer = this
+            this.update()
+        }
+
+        var $ = function (id) {
+            return document.getElementById(id)
+        }
+        new Editor($("text-input"), $("preview"))
+
+        $('#myCarousel').carousel('pause')
+    </script>
+
+    <!-- jQuery Version 3.1.1 -->
+    <script src="../static/lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="../static/lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../static/js/clean-blog.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+        $("table tr:nth-child(even)").addClass("even");
+        var content = document.getElementById("State").value;
+            if (content == 'success')
+                alert('Upload success.')
+            if (content == 'failed')
+                alert('Upload failure.')
+        })
+    </script>
+
+</body>
+
+</html>
